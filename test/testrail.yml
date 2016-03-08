@@ -1,0 +1,38 @@
+
+
+# # define this only once :)
+# _testrail: &TESTRAIL
+#     url: {{env.TESTRAIL_URL|default("http://testrail")}}
+#     user: {{env.TESTRAIL_USER|default("apiuser@testrail.local")}}
+#     password: {{env.TESTRAIL_PASS|default("apiuser")}}
+#     testrun_id: {{env.TESTRAIL_TESTRUN_ID}}
+#     mapping:
+#         1: 'test_version.py'
+
+#
+# Collection plugin
+#
+collector:
+    # <<: *TESTRAIL
+    name: filesys # or testrail
+    basedir: {{env.PWD}}/cases
+
+#
+# Runner plugin
+#
+runner:
+    name: pytest
+    # ini: |
+    #     [pytest]
+    #     addopts = '-v -s'
+    #tmpdir: {{env.TMP}}
+    addopts: '-v'
+#
+# Reporting plugins
+#
+reporter:
+    html:
+        outputdir: {{env.PWD}}/_reports
+
+    # testrail:
+    #     <<: *TESTRAIL

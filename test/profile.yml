@@ -1,0 +1,16 @@
+
+dut: &DUT
+    hostname: vswitch1
+    username: admin
+    password: ""
+    authorize: ""
+    vrf: management
+
+sdut:
+    <<: *DUT
+    hostname: vswitch2
+
+station: &STATION 192.168.56.7
+
+test_version:
+    version: 4.15.2
