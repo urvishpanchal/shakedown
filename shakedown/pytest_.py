@@ -113,7 +113,6 @@ class ShakedownPlugin(object):
         pass
 
 def run(config, tests): #, report):
-    opts = config.get('addopts', '').split()
+    opts = config['runner'].get('addopts', '').split()
     opts += tests
-    print opts
     pytest.main(opts, plugins=[ShakedownPlugin(config)])

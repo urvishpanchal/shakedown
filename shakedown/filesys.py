@@ -16,7 +16,8 @@ DEFAULT_PATTERN = 'test_*.py'
 def collect(config, filter):
 
     filter = filter or ['.']
-
+    print ("filter")
+    print(filter)
     tests = []
     paths = []
 
@@ -32,5 +33,6 @@ def collect(config, filter):
             matches = glob.glob(os.path.join(path, DEFAULT_PATTERN))
             if matches:
                 tests.extend(matches)
-
+    print ("in collect")
+    print (tests)
     return tests

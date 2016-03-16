@@ -13,7 +13,6 @@ import imp
 import os
 #import tempfile
 import argparse
-
 import yaml
 #import jinja2
 from six import iteritems
@@ -166,7 +165,7 @@ def classify(string):
 def collect(config, filter):
     """
     """
-    name = config['collector'].get('name', 'filesys')
+    name = config['collector'].get('name','testrail')
     module = load_plugin(name)
 
     # the collect function should return a list of tests to run
@@ -215,11 +214,10 @@ def main():
 
     if args.eval:
         config.merge(args.eval)
-
-    print(config)
+    #print(config)
     #invoke the collector...
     tests = collect(config, args.filter)
-    print(tests)
+    #print(tests)
     # run the tests...
     results = run(config, tests)
 
